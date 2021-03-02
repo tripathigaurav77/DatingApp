@@ -1,6 +1,5 @@
 import { AccountService } from './../_services/account.service';
-import { map } from 'rxjs/operators';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
