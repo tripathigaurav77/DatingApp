@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "NU1opFaiRXwBMuo7N3MbouFyPpiI1D1rTXRTHk6ja3qpSV6Ca+Nou9Ca9pQBuj/xDQbEjJ+YD7D9CfXOX7KG+Q==",
+  "success": true,
+  "projectFilePath": "/Users/gaurav/work/DatingApp/API/API.csproj",
+  "expectedPackageFiles": [
+    "/Users/gaurav/.nuget/packages/microsoft.aspnetcore.openapi/7.0.2/microsoft.aspnetcore.openapi.7.0.2.nupkg.sha512",
+    "/Users/gaurav/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "/Users/gaurav/.nuget/packages/microsoft.openapi/1.4.3/microsoft.openapi.1.4.3.nupkg.sha512",
+    "/Users/gaurav/.nuget/packages/swashbuckle.aspnetcore/6.4.0/swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "/Users/gaurav/.nuget/packages/swashbuckle.aspnetcore.swagger/6.4.0/swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "/Users/gaurav/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.4.0/swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "/Users/gaurav/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.4.0/swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}
