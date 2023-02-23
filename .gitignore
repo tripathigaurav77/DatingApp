@@ -475,27 +475,4 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-API/bin/Debug/net7.0/API.deps.json
-API/bin/Debug/net7.0/API.dll
-API/bin/Debug/net7.0/API.pdb
-API/bin/Debug/net7.0/API.runtimeconfig.json
-API/bin/Debug/net7.0/appsettings.Development.json
-API/bin/Debug/net7.0/Microsoft.AspNetCore.OpenApi.dll
-API/bin/Debug/net7.0/Microsoft.OpenApi.dll
-API/obj/API.csproj.nuget.g.props
-API/obj/API.csproj.nuget.g.targets
-API/obj/project.assets.json
-API/obj/project.nuget.cache
-API/obj/Debug/net7.0/API.assets.cache
-API/obj/Debug/net7.0/API.csproj.AssemblyReference.cache
-API/obj/Debug/net7.0/API.csproj.CoreCompileInputs.cache
-API/obj/Debug/net7.0/API.csproj.FileListAbsolute.txt
-API/obj/Debug/net7.0/API.dll
-API/obj/Debug/net7.0/API.genruntimeconfig.cache
-API/obj/Debug/net7.0/API.MvcApplicationPartsAssemblyInfo.cs
-API/obj/Debug/net7.0/API.pdb
-API/obj/Debug/net7.0/project.razor.json
-API/obj/Debug/net7.0/ref/API.dll
-API/obj/Debug/net7.0/refint/API.dll
 .DS_Store
-API/obj/API.csproj.nuget.dgspec.json
