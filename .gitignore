@@ -476,3 +476,5 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 .DS_Store
+API/datingapp.db-shm
+API/datingapp.db-wal
