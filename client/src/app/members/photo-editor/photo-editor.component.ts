@@ -20,8 +20,8 @@ export class PhotoEditorComponent implements OnInit {
   baseUrl = environment.apiUrl;
   user: User | undefined;
 
-  constructor(private accountServicce: AccountService, private memberService: MembersService) { 
-    this.accountServicce.currentUser$.pipe(take(1)).subscribe({
+  constructor(private accountService: AccountService, private memberService: MembersService) {
+    this.accountService.currentUser$.pipe(take(1)).subscribe({
       next: user => {
         if (user) this.user = user;
       }
@@ -41,7 +41,7 @@ export class PhotoEditorComponent implements OnInit {
       next: () => {
         if (this.user && this.member) {
           this.user.photoUrl = photo.url;
-          this.accountServicce.setCurrentUser(this.user);
+          this.accountService.setCurrentUser(this.user);
           this.member.photoUrl = photo.url;
           this.member.photos.forEach(p => {
             if (p.isMain) p.isMain = false;
@@ -73,7 +73,7 @@ export class PhotoEditorComponent implements OnInit {
       maxFileSize: 10 * 1024 * 1024
     });
 
-    this.uploader.onAfterAddingFile = (file) =>{
+    this.uploader.onAfterAddingFile = (file) => {
       file.withCredentials = false;
     }
 
@@ -81,6 +81,11 @@ export class PhotoEditorComponent implements OnInit {
       if (response) {
         const photo = JSON.parse(response);
         this.member?.photos.push(photo);
+        if (photo.isMain && this.user && this.member) {
+          this.user.photoUrl = photo.url;
+          this.member.photoUrl = photo.url;
+          this.accountService.setCurrentUser(this.user);
+        }
       }
     }
   }
