@@ -1,7 +1,7 @@
-using System.Security.Claims;
 using API.DTOs;
 using API.Entities;
 using API.Extensions;
+using API.Helpers;
 using API.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -19,14 +19,16 @@ namespace API.Controllers
         {
             _photoService = photoService;
             _mapper = mapper;
-            _userRepository = userRepository;            
+            _userRepository = userRepository;
         }
 
         [HttpGet]
         // [AllowAnonymous]
-        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers()
+        public async Task<ActionResult<PagedList<MemberDto>>> GetUsers([FromQuery] UserParams userParams)
         {
-            var users = await _userRepository.GetMembersAsync();
+            var users = await _userRepository.GetMembersAsync(userParams);
+
+            Response.AddPaginationHeader(new PaginationHeader(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages));
 
             return Ok(users);
         }
@@ -40,7 +42,7 @@ namespace API.Controllers
         [HttpPut]
         public async Task<ActionResult> UpdateUser(MemberUpdateDto memberUpdateDto)
         {
-            //Gettting username from token
+            //Getting username from token
             //var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             //User.GetUserName from ClaimsPrincipalExtension
             var user = await _userRepository.GetUserByUsernameAsync(User.GetUserName());
@@ -59,11 +61,11 @@ namespace API.Controllers
         {
             var user = await _userRepository.GetUserByUsernameAsync(User.GetUserName());
 
-            if (user == null)   return NotFound();
+            if (user == null) return NotFound();
 
             var result = await _photoService.AddPhotoAsync(file);
 
-            if (result.Error != null)   return BadRequest(result.Error.Message);
+            if (result.Error != null) return BadRequest(result.Error.Message);
 
             var photo = new Photo
             {
@@ -77,7 +79,7 @@ namespace API.Controllers
 
             if (await _userRepository.SaveAllAsync())
             {
-                return CreatedAtAction(nameof(GetUser), new {username = user.UserName}, _mapper.Map<PhotoDto>(photo));
+                return CreatedAtAction(nameof(GetUser), new { username = user.UserName }, _mapper.Map<PhotoDto>(photo));
             }
 
             return BadRequest("Problem adding photo");
