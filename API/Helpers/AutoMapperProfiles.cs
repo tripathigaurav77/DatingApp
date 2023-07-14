@@ -20,7 +20,7 @@ namespace API.Helpers
                 .ForMember(d => d.SenderPhotoUrl, o => o.MapFrom(s => s.Sender.Photos
                     .FirstOrDefault(x => x.IsMain).Url));
             CreateMap<Message, MessageDto>()
-                .ForMember(d => d.ReciepientPhotoUrl, o => o.MapFrom(s => s.Reciepient.Photos
+                .ForMember(d => d.RecipientPhotoUrl, o => o.MapFrom(s => s.Recipient.Photos
                     .FirstOrDefault(x => x.IsMain).Url));
         }
     }

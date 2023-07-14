@@ -3,6 +3,7 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230714091150_MessageEntityFix")]
+    partial class MessageEntityFix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.3");
@@ -85,10 +88,10 @@ namespace API.Data.Migrations
                     b.Property<bool>("ReciepientDeleted")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("RecipientId")
+                    b.Property<int>("ReciepientId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("RecipientUsername")
+                    b.Property<string>("ReciepientUsername")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("SenderDeleted")
@@ -102,7 +105,7 @@ namespace API.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RecipientId");
+                    b.HasIndex("ReciepientId");
 
                     b.HasIndex("SenderId");
 
@@ -151,9 +154,9 @@ namespace API.Data.Migrations
 
             modelBuilder.Entity("API.Entities.Message", b =>
                 {
-                    b.HasOne("API.Entities.AppUser", "Recipient")
+                    b.HasOne("API.Entities.AppUser", "Reciepient")
                         .WithMany("MessagesRecieved")
-                        .HasForeignKey("RecipientId")
+                        .HasForeignKey("ReciepientId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -163,7 +166,7 @@ namespace API.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Recipient");
+                    b.Navigation("Reciepient");
 
                     b.Navigation("Sender");
                 });
