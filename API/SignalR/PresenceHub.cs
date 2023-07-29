@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace API.SignalR
 {
-[Authorize]
+    [Authorize]
     public class PresenceHub : Hub
     {
         private readonly PresenceTracker _tracker;
